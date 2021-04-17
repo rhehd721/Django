@@ -43,6 +43,15 @@ from django.shortcuts import render
 from .models import Test_Model
 
 def home(request):
-    modle = Test_Model.objects.all()
+    modle = Test_Model.objects    # Query Set
     return render (request, 'home.html', {"Test_Model" : modle})
+```
+- home.html
+```html
+<!-- Query Set Method애 관해 찾아보기 -->
+{{Test_Model.all()}}
+{% for i in Test_Model.all %}
+    <h1> {{Test_Model.title}} </h1>
+    <h2> {{Test_Model.contents}} </h2>
+{% endfor %}
 ```
