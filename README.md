@@ -1,5 +1,11 @@
 # Django
-![Django]("./Image/Django_Framework.png")
+![Django](./Django/Image/Django_Framework.png)
+
+# 구성
+- [Views](./Django/Views/README.md)
+- [URL](./Django/Urls/README.md)
+- [Setting](./Django/Setting/README.md)
+- [Models](./Django/Models/README.md)
 
 ## Project 시작
 - Project 만들기
@@ -11,6 +17,7 @@
 - DB
     - python3 manage.py migrate
     - python3 manage.py makemigrations <app Name>
+
 
 ## 가상환경 vevn
 - 가상환경 설치
