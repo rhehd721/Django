@@ -75,6 +75,34 @@ num = {{ class | length }}
 {{% endfor %}}
 ```
 - EX_2
+```HTML
+<!-- {% url 'url_name'%} -->
+
+<a href = "{% url 'index'%}">home 으로 돌아가기</a>
+```
+## HTML상의 입력한 Data 추출하기
+- HTML 상의 예제 코드
+```HTML
+<!-- 현재위치 : home.html -->
+
+<!-- input을 누를시 form action에 해당하는 곳으로 정보를 보낸다. -->
+<form action = "{%url 'result'%}">
+    <textarea cols = "50" rows = "10" name = "fulltext"></textarea>
+    <br>
+    <input type = "submit" value = "Count!">
+</form>
+```
+- 위 HTML 코드에 대응하는 Python(views) 코드
 ```python
-{% url 'url_name'%}
+def result(request):
+    text = request.GET['fulltext'] # HTML에서 name이 fulltext인 요소를 가져와라
+    word = text.split()
+    return render(requset, "result.html", {"full" : text, "word_len" : len(word)}) # 가져온 요소를 result.html에 띄워주기 위해 render 마지막에 딕셔너리 형태로 넘겨준다 (Key 값은 자신이 정해주는 이름이다)
+```
+- views에서 작업한 요소 html상에 띄워주기
+```html
+<h2>입력한 텍스트는 아래와 같습니다</h2>
+{{full}}
+<h2>입력한 문자의 길이는 아래와 같습니다</h2>
+{{word_len}}
 ```
