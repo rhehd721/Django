@@ -15,8 +15,10 @@
 - App 만들기
     - python3 manage.py startapp <app Name>
 - DB
-    - python3 manage.py migrate
     - python3 manage.py makemigrations <app Name>
+    - python3 manage.py migrate
+- Admin
+    - python3 manage.py createsuperuser
 
 
 ## 가상환경 vevn
