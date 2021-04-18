@@ -20,7 +20,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 - {% load staticfiles %}
 ```html
 <!-- HTML -->
-{% load staticfiles %}
+{% load static %}
 <img src = "{% static 'test.jpg' %}">
 ```
 
