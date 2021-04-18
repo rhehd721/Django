@@ -11,6 +11,7 @@ def index(request):
 ```
 
 ## 회원가인, 로그인, 로그아웃
+- Views.py
 ```python
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -64,4 +65,57 @@ def logout(request):
 
     # logout으로 GET 요청이 들어왔을 때, 로그인 화면을 띄워준다.
     return render(request, './html/login.html')
+```
+- HTML
+```html
+<body>
+    <!-- 요청방식을 POST로 지정해준다 -->
+    <form method="POST" action="{% url 'login' %}">
+        <!-- 보안 -->
+        {% csrf_token %}
+        <p>username</p>
+        <input type="text" name="username">
+        <br>
+        <p>password</p>
+        <input type="text" name="password">
+        <br>
+        <input type="submit" value="로그인">
+    </form>
+</body>
+```
+
+## Pagination
+- 1. 무슨 객체를 한페이지당 몇개씩? : Paginator(object, num)
+- 2. 내가 원하는 페이지 가져오기 : PaginatorObject.get_page(가지고 오고싶은 페이지 번호)
+- 3. 가지고온 페이지 html에 띄우기 : 페이지객체 메소드 함수 + template 언어
+
+### Paginator Class VS Page Class
+- Class Paginator(object_list, per_page, orphans = 0, allow_empty_first_page = True)
+- Class Page(object_list, number, paginator)
+- page 객체 메소드 함수
+    - page.count() : 총 객체 수
+    - page_num_pages() : 총 페이지 갯수
+    - page.page(n) : n번째 페이지 return
+    - page.page_range() : 페이지 리스트 반환
+- Request받은 페이지 번호
+    - page = request.GET.get('page')
+- 실제 page 가져오기
+    - paginator.get_page(page)
+
+### Paginator Views.py
+```python
+from django.core.paginator import Paginator
+from .model import Blog
+
+def home(request):
+    # 블로그의 모든 글을 가져온다
+    blog_list = Blog.objects.all()
+    # 블로그 객체 3개를 한 패이지로 자른다
+    paginator = Paginator(blog_list, 3)
+    # request된 페이지가 무엇인지 알아낸다
+    page = request.GET.get('page')
+    # request된 페이지를 알아낸뒤 return한다.
+    posts = paginator.get_page(page)
+    
+    return render(request, 'home.html' {'posts' : posts})
 ```

@@ -110,7 +110,7 @@ def result(request):
 {{word_len}}
 ```
 
-## base.html
+## Base.html 만들기
 - 1. Project폴더 내 Templates폴더 생성
 - 2. base.html 생성 후 setting.py에 알리기
 
@@ -151,3 +151,9 @@ TEMPLATES = [
 <!-- html code -->
 {% endblock %}
 ```
+
+## GET, POST, PUT, DELETE
+- GET : 데이터 조회
+- POST : 데이터 생성
+- PUT : 데이터 수정
+- DELETE : 데이터 삭제
