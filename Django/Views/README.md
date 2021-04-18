@@ -119,3 +119,25 @@ def home(request):
     
     return render(request, 'home.html' {'posts' : posts})
 ```
+### Paginator HTML
+```html
+<!-- 정해진 갯수만큼 게시물 출력 -->
+{% for i in posts %}
+    <h2>i.title</h2>
+{% endfor %}
+
+<!-- First Previous 3 of 4 Next Last -->
+{% if posts.has_previous %}
+<a herf = "?page=1">First</a>
+<a herf = "?page={{posts.previous_page_number}}">Previous</a>
+{% endif %}
+
+<span>{{posts.number}}</span>
+<span>of</span>
+<span>{{posts.paginator.num_pages}}</span>
+
+{% if posts.has_next %}
+<a herf = "?page={{posts.next_page_number}}">Next</a>
+<a herf = "?page={{posts.paginator.num_pages}}">Last</a>
+{% endif %}
+```
