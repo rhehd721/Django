@@ -6,6 +6,7 @@
 - [URL - 특정 URL 입력시 HTML 연결](./Django/Urls/README.md)
 - [Setting](./Django/Setting/README.md)
 - [Models](./Django/Models/README.md)
+- [Static](./Django/Static/README.md)
 
 ## Project 시작
 - Project 만들기
@@ -107,4 +108,46 @@ def result(request):
 {{full}}
 <h2>입력한 문자의 길이는 아래와 같습니다</h2>
 {{word_len}}
+```
+
+## base.html
+- 1. Project폴더 내 Templates폴더 생성
+- 2. base.html 생성 후 setting.py에 알리기
+
+- setting.py
+```python
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': ['Project/templates'], # 해당 부분에 base.html에 존재 알려주기
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+```
+- base.html
+```html
+
+<!-- html code -->
+
+{% block contents %}
+
+{% endblock %}
+
+<!-- html code -->
+```
+- home.html
+```html
+{% extends 'base.html' %}
+
+{% block contents %}
+<!-- html code -->
+{% endblock %}
 ```

@@ -60,3 +60,17 @@ def detail(request, user_id):
     <a herf = "{% url 'detail_' Test_Model.id ">...clik</a>
 {% endfor %}
 ```
+
+## APP에서 URL 관리하기
+- Project/urls.py
+```python
+from django.contrib import admin
+from django.urls import path, include   # import include
+
+
+urlpatterns = [
+    path('', include('App.urls')),  # include() 함수를 통해 다른 app에 url을 불러온다
+    path('accounts/', include('accounts.urls')),  # include() 함수를 통해 다른 app에 url을 불러온다
+    path('admin/', admin.site.urls),
+]
+```
