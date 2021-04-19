@@ -57,3 +57,14 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 ```
+
+## ERROR
+- message
+```cmd
+django.utils.datastructures.MultiValueDictKeyError
+```
+- 해결법
+```python
+# request.POST['key'] 대신에 
+request.POST.get('key', '')
+```
