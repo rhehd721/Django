@@ -75,6 +75,7 @@ Aclass = ["a", "b", "c"]
 num = {{ class | length }}
 {% for i in class %}
     {{i}}
+    {{i.date | date:"Y-m-d"}}
 {{% endfor %}}
 ```
 - EX_2
