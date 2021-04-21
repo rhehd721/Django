@@ -158,3 +158,15 @@ TEMPLATES = [
 - POST : 데이터 생성
 - PUT : 데이터 수정
 - DELETE : 데이터 삭제
+
+## a Tag
+```html
+<style>
+    
+    a:link { color: black; } /* 방문 전 */
+    a.class:visited { color: green; } /* 방문 후 */
+    a#id:hover { color: blue; } /* 마우스 오버 */
+    a:active { color: red; } /* 클릭 */
+
+</style>
+```
