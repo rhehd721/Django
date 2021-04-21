@@ -57,7 +57,7 @@ def detail(request, user_id):
 {% for i in Test_Model.all %}
     <h1> {{Test_Model.title}} </h1>
     <h2> {{Test_Model.contents}} </h2>
-    <a herf = "{% url 'detail_' Test_Model.id ">...clik</a>
+    <a herf = "{% url 'detail_' Test_Model.id %}">...clik</a>
 {% endfor %}
 ```
 
